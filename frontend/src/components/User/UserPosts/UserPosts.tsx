@@ -1,69 +1,25 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../context/auth";
+import { getPosts, editPost, deletePost } from '../../../services/user.service';
+import { PostType, UserType } from "../../../types/types";
 import formatDate from "../../../utils/formatDate";
 import { UserPostsContainer } from "./Style";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-type User = {
-  id: string;
-  name: string;
-  email: string;
-};
-
-type Post = {
-  id: number;
-  title: string;
-  content: string;
-  published: Date;
-  updated: Date;
-  user: User;
-};
-
 export const UserPosts = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostType[]>([]);
   const [editingPostId, setEditingPostId] = useState<number | null>(null);
   const [editingPostData, setEditingPostData] = useState<any | null>(null);
-  const { user } = useAuth() as { user: User };
+  const { user } = useAuth() as { user: UserType };
   const { id } = user;
-
-  const getPosts = async () => {
-    if (id) {
-      const res = await fetch(`http://localhost:3001/post/user/${id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("@Auth:access_token")}`,
-        },
-      });
-      const data = await res.json();
-      console.log(data);
-      
-      setPosts(data);
-    }
-  };
 
   const handleEdit = async (postId: number) => {
     if (editingPostId === postId && editingPostData) {
-      const res = await fetch(`http://localhost:3001/post/${postId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("@Auth:access_token")}`,
-        },
-        body: JSON.stringify(editingPostData),
-      });
-
-      if (res.ok) {
-        getPosts();
+      const success = await editPost(postId, editingPostData);
+      if (success) {
         setEditingPostId(null);
         setEditingPostData(null);
-        Swal.fire({
-          title: "Post edited",
-          icon: "success",
-        });
-      } else {
-        console.error("Erro ao editar o post");
       }
     } else {
       setEditingPostId(postId);
@@ -77,35 +33,32 @@ export const UserPosts = () => {
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#000',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     })
   
     if (result.isConfirmed) {
-      const res = await fetch(`http://localhost:3001/post/${postId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("@Auth:access_token")}`,
-        },
-      });
-  
-      if (res.ok) {
-        getPosts();
+      const success = await deletePost(postId);
+      if (success) {
+        setPosts(posts.filter(post => post.id !== postId));
         Swal.fire({
-          title: "Post deleted",
-          icon: "success",
-        });
-      } else {
-        // Se houver um erro, você pode tratá-lo aqui
-        console.error("Erro ao deletar o post");
+          title: 'Deleted!',
+          text: 'Your post has been deleted.',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     }
   }
-    
+
   useEffect(() => {
-    getPosts();
+    const fetchPosts = async () => {
+      const data = await getPosts(id);
+      setPosts(data);
+    }
+    fetchPosts();
   }, []);
 
   return (
