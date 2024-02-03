@@ -26,8 +26,8 @@ function Header() {
       <MenuTop>
         <span>Turma 34 - Backend - Trybe</span>
         <div>
-          <Link to="#"><FaGithub /></Link>
           <Link to="#"><FaLinkedin /></Link>
+          <Link to="https://github.com/rafaelmagalhaesguedes" target='_blank'><FaGithub /></Link>
         </div>
       </MenuTop>
       <HeaderContainer>
