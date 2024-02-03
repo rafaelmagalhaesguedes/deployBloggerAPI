@@ -9,7 +9,14 @@ export const CategoryContainer = styled.div`
     border-top: 1px solid #ccc;
     background-color: #fff;
 
-    
+    a {
+        border-radius: 5px;
+        text-decoration: none;
+        color: #000;
+        font-weight: 400;
+        padding-bottom: 15px;
+    }
+
     h2 {
         margin: 20px 0;
     }
