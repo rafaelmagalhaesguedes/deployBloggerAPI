@@ -44,7 +44,7 @@ const Profile = () => {
         {editing ? (
           <input value={image || ''} onChange={e => setImage(e.target.value)} />
         ) : (
-          !image ? <img src={image} alt={displayName} /> : <FaUserAlt size={100}/>
+          image ? <img src={image} alt={displayName} /> : <FaUserAlt size={100}/>
         )}
         <p><strong>User: </strong> {editing ? <input value={displayName} onChange={e => setDisplayName(e.target.value)} /> : displayName}</p>
         <p><strong>Email: </strong>{editing ? <input value={email} onChange={e => setEmail(e.target.value)} /> : email}</p>
