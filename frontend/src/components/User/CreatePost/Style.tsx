@@ -11,6 +11,14 @@ export const CreatePostContainer = styled.div`
   background-color: #fff;
   border-top: 1px solid #ccc;
 
+  a {
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 400;
+    padding-bottom: 15px;
+  }
+
   input, select, textarea {
     width: 100%;
     padding: 10px;
