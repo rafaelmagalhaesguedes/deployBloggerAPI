@@ -1,5 +1,3 @@
-import Swal from "sweetalert2";
-
 const API_URL = 'http://localhost:3001';
 
 export const getPosts = async (id: string) => {
@@ -25,10 +23,6 @@ export const editPost = async (postId: number, editingPostData: any) => {
     });
 
     if (res.ok) {
-        Swal.fire({
-            title: "Post edited",
-            icon: "success",
-        });
         return true;
     } else {
         console.error("Erro ao editar o post");
@@ -46,10 +40,6 @@ export const deletePost = async (postId: number) => {
     });
 
     if (res.ok) {
-        Swal.fire({
-            title: "Post deleted",
-            icon: "success",
-        });
         return true;
     } else {
         console.error("Erro ao deletar o post");
