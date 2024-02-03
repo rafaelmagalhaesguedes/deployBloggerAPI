@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContextData, LoginType, UserCreateType } from "../types/authContext";
-import { api } from "../services/api";
-import Swal from "sweetalert2";
+import { api } from "../services/auth.service";;
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
