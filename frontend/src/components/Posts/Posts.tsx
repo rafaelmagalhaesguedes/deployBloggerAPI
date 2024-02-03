@@ -6,8 +6,6 @@ import formatDate from "../../utils/formatDate";
 export const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  console.log(posts);
-  
 
   const handleSearch = async () => {
     const posts = await searchPost(searchQuery);
