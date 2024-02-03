@@ -19,6 +19,10 @@ export const userHook = (userId: string) => {
       if (success) {
         setEditingPostId(null);
         setEditingPostData(null);
+        Swal.fire({
+          title: "Post edited",
+          icon: "success",
+      });
       }
     } else {
       setEditingPostId(postId);
