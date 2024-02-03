@@ -1,5 +1,28 @@
 import { PostType } from "../types/types";
 
+export const createPost = async (userId: number, title: string, content: string, categoryIds: number[]) => {
+  const res = await fetch("http://localhost:3001/post", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("@Auth:access_token")}`,
+    },
+    body: JSON.stringify({
+      id: userId,
+      title: title,
+      content: content,
+      categoryIds: categoryIds,
+    }),
+  });
+
+  if (res.status !== 201) {
+    const data = await res.json();
+    throw new Error(data.message);
+  }
+
+  return res.json();
+}
+
 export const findAll = async () => {
   const res = await fetch("http://localhost:3001/post", {
     method: "GET",
@@ -24,23 +47,4 @@ export const searchPost = async (searchQuery: string) => {
   let data = await res.json();
   data = data.sort((a: PostType, b: PostType) => b.id - a.id);
   return data;
-}
-
-export const createPost = async (id: string, title: string, content: string, selectedCategories: number[]) => {
-  const res = await fetch("http://localhost:3001/post", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("@Auth:access_token")}`,
-    },
-    body: JSON.stringify({
-      id: id,
-      title: title,
-      content: content,
-      categoryIds: selectedCategories // Convert selected categories to numbers
-    }),
-  });
-  
-  const data = await res.json();
-  return { status: res.status, data: data };
 }
