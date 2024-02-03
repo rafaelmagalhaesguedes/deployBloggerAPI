@@ -101,6 +101,13 @@ function Register() {
   
       // Store the token in localStorage
       localStorage.setItem("@Auth:access_token", data.token);
+
+      // Clear the form
+      setDisplayName('');
+      setEmail('');
+      setPassword('');
+      setImage('');
+      setPasswordConfirmation('');
   
       Swal.fire({
         icon: "success",
