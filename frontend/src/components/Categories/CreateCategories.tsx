@@ -1,6 +1,6 @@
 import { CategoryContainer } from "./Style";
 import { Link } from "react-router-dom";
-import { useCreateCategory } from "../../hooks/catregoryHook";
+import { useCreateCategory } from "../../hooks/categoryHook";
 import { FaArrowLeft } from "react-icons/fa";
 
 const CreateCategory = () => {
