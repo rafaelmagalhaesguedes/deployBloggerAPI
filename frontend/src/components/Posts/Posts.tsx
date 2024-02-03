@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 import { ContainerPosts, Post, PostCard, SearchBar, Title } from "./Style";
-import formatDate from "../../utils/formatDate";
-import { useAuth } from "../../context/auth";
-import { UserType } from "../../types/types";
 import { findAll, searchPost } from "../../services/post.service";
-
+import formatDate from "../../utils/formatDate";
 
 export const Posts = () => {
   const [posts, setPosts] = useState([]);
-  const { user } = useAuth() as { user: UserType };
   const [searchQuery, setSearchQuery] = useState('');
   console.log(posts);
   

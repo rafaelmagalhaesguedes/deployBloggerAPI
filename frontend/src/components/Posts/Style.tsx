@@ -17,6 +17,16 @@ export const Title = styled.div`
     width: 40%;
     color: #000;
   }
+
+  a {
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    color: #222;
+  }
 `;
 
 export const SearchBar = styled.div`
@@ -29,13 +39,13 @@ export const SearchBar = styled.div`
 
   input {
     width: 70%;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 10px;
     border: 1px solid #000;
   }
 
   button {
-    padding: 5px;
+    padding: 5px 15px;
     border-radius: 10px;
     border: 1px solid #000;
     cursor: pointer;
