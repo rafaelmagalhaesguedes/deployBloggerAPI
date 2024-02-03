@@ -8,6 +8,15 @@ export const UserPostsContainer = styled.div`
   margin: 0 auto;
   padding: 30px;
   gap: 5px;
+
+    a {
+        border-radius: 5px;
+        text-decoration: none;
+        color: #000;
+        font-weight: 400;
+        padding-bottom: 15px;
+    }
+
     background-color: #fff;
     border-top: 1px solid #ccc;
 

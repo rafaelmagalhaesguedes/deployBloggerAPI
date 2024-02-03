@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAuth } from "../../../context/auth";
 import { UserType } from "../../../types/types";
 import { UserPostsContainer } from "./Style";
 import { userHook } from "../../../hooks/userHook";
 import { Link } from "react-router-dom";
 import formatDate from "../../../utils/formatDate";
+import { FaArrowLeft } from "react-icons/fa";
 
 export const UserPosts = () => {
   const { user } = useAuth() as { user: UserType };
@@ -25,8 +26,7 @@ export const UserPosts = () => {
 
   return (
     <UserPostsContainer>
-      <Link to="/">Back</Link>
-      <br /><br />
+      <Link to="/"><FaArrowLeft size={15} /> Back</Link>
       <h2>My Posts</h2>
       <table>
         <thead>
