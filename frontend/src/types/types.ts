@@ -1,8 +1,3 @@
-export type LoginType = {
-  email: 'string',
-  password: 'string',
-};
-
 export type PostType = {
   id: number;
   title: string;
@@ -16,4 +11,9 @@ export type UserType = {
   email: string;
   displayName: string;
   image: string;
+};
+
+export type CategoryType = {
+  id: number;
+  name: string;
 };
