@@ -101,7 +101,7 @@ export const UserInfo = styled.div`
   justify-content: space-between;
   align-items: center;
   
-  p {
+  span {
     margin: 0;
     padding: 10px;
   }

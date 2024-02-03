@@ -3,6 +3,7 @@ import { useAuth } from "../../context/auth";
 import { UserType } from "../../types/types";
 import { ProfileContainer } from "./Style";
 import { Link } from "react-router-dom";
+import { FaUserAlt } from "react-icons/fa";
 
 const Profile = () => {
   const { user, Logout } = useAuth() as any;
@@ -29,7 +30,6 @@ const Profile = () => {
       });
 
       if (res.ok) {
-        // Atualize o estado do usuário aqui
         setEditing(false);
       } else {
         console.error("Erro ao editar o perfil");
@@ -42,9 +42,9 @@ const Profile = () => {
       <div>
         <h2>Profile</h2>
         {editing ? (
-          <input value={image} onChange={e => setImage(e.target.value)} />
+          <input value={image || ''} onChange={e => setImage(e.target.value)} />
         ) : (
-          <img src={image} alt={displayName} />
+          !image ? <img src={image} alt={displayName} /> : <FaUserAlt size={100}/>
         )}
         <p><strong>User: </strong> {editing ? <input value={displayName} onChange={e => setDisplayName(e.target.value)} /> : displayName}</p>
         <p><strong>Email: </strong>{editing ? <input value={email} onChange={e => setEmail(e.target.value)} /> : email}</p>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaUser } from 'react-icons/fa';
 import { useAuth } from '../../context/auth';
 import { HeaderContainer, Navbar, DropdownMenu, DropdownItem, Logo, UserInfo, MenuHeader, MenuTop } from './Style';
 import { useState } from 'react';
@@ -7,7 +7,7 @@ import { useState } from 'react';
 function Header() {
   const { user, Logout } = useAuth() as any;
   const [isOpen, setIsOpen] = useState(false);
-
+  
   const handleLogout = () => {
     Logout();
     setIsOpen(false);
@@ -35,8 +35,10 @@ function Header() {
           <h1>Project Blog's API</h1>
         </Logo>
         <UserInfo>
-          <p>{user.displayName}</p>
-          <img src={user.image} alt={user.displayName} />
+          <span>{user.displayName}</span>
+          <span>
+            {user.image === 'imagen' ? <FaUser /> : <img src={user.image} alt="User" />}
+          </span>
         </UserInfo>
         <MenuHeader>
           <Navbar onClick={toggleMenu}>

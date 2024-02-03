@@ -14,8 +14,11 @@ export const ProfileContainer = styled.div`
     div {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 1rem;
     }
+
     img {
         width: 150px;
         height: 150px;
