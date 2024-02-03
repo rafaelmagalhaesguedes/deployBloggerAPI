@@ -12,7 +12,7 @@ export type PostType = {
 };
 
 export type UserType = {
-  id: number;
+  id: any;
   email: string;
   displayName: string;
   image: string;

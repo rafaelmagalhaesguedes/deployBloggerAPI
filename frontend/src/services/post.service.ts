@@ -1,5 +1,4 @@
-import Swal from "sweetalert2";
-import { UserType, PostType } from "../types/types";
+import { PostType } from "../types/types";
 
 export const findAll = async () => {
   const res = await fetch("http://localhost:3001/post", {
