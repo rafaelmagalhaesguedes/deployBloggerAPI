@@ -6,6 +6,7 @@ import Layout from "../components/Layout/Layout";
 import Profile from "../pages/Profile/Profile";
 import { Home } from "../pages/Home/Home";
 import { SinglePost } from "../components/Posts/SinglePost/SinglePost";
+import { EditPost } from "../components/User/EditPost/EditPost";
 
 export const ProtectRoutes = () => {
   return (
@@ -14,6 +15,7 @@ export const ProtectRoutes = () => {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/single-post/:id" element={<SinglePost />} />
+          <Route path="/edit-post/:id" element={<EditPost />} />
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/user-posts" element={<UserPosts />} />
