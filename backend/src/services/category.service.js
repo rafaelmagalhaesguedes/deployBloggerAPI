@@ -23,6 +23,16 @@ const getAllCategories = async () => {
   return { status: 'SUCCESSFUL', data: categories };
 };
 
+const updateCategory = async (id, name) => {
+  const category = await Category.findByPk(id);
+  if (!category) throw httpError('Category not found', 404);
+
+  category.name = name;
+  await category.save();
+
+  return { status: 'SUCCESSFUL', data: category };
+};
+
 const deleteCategory = async (id) => {
   const category = await Category.findByPk(id);
   if (!category) throw httpError('Category not found', 404);
@@ -39,7 +49,7 @@ const deleteCategory = async (id) => {
 module.exports = {
   createCategory,
   createPostCategory,
-
+  updateCategory,
   getAllCategories,
   deleteCategory,
 };

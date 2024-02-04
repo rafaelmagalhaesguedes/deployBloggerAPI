@@ -10,6 +10,9 @@ router.post('/', authenticate, categoryController.createCategory);
 // Route to get all categories
 router.get('/', authenticate, categoryController.getAllCategories);
 
+// Route to update a category
+router.put('/:id', authenticate, categoryController.updateCategory);
+
 // Route to delete a category
 router.delete('/:id', authenticate, categoryController.deleteCategory);
 
