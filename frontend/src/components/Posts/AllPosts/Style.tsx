@@ -14,7 +14,7 @@ export const Title = styled.div`
   padding: 0 10px;
 
   h2 {
-    width: 40%;
+    width: 20%;
     color: #000;
   }
 
@@ -79,6 +79,19 @@ export const PostCard = styled.div`
         display: flex;
         justify-content: start;
         gap: 1rem;
+    }
+
+    .content-value {
+        display: flex;
+        flex-direction: column;
+
+        a {
+            text-decoration: none;
+        }
+    }
+    
+    .read-more {
+        padding-bottom: 10px;
     }
 
     span {

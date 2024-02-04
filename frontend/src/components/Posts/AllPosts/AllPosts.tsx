@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { ContainerPosts, Post, PostCard, SearchBar, Title } from "./Style";
-import { findAll, searchPost } from "../../services/post.service";
-import formatDate from "../../utils/formatDate";
+import { findAllPosts, searchPost } from "../../../services/post.service";
+import formatDate from "../../../utils/formatDate";
+import trimContent from "../../../utils/trimContent";
+import { Link } from "react-router-dom";
 
 export const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -14,7 +16,7 @@ export const Posts = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const posts = await findAll();
+      const posts = await findAllPosts();
       setPosts(posts);
     }
     fetchPosts();
@@ -33,9 +35,10 @@ export const Posts = () => {
           />
           <button onClick={handleSearch}>Search</button>
         </SearchBar>
-        <a href="/create-post">New Post</a>
-        <a href="/user-posts">My Posts</a>
-        <a href="/">All Posts</a>
+        <Link to="/create-post">New Post</Link>
+        <Link to="/user-posts">My Posts</Link>
+        <Link to="/">All Posts</Link>
+        <Link to="/categories">Categories</Link>
       </Title>
       <Post>
         {posts.map((post: any) => (
@@ -45,7 +48,12 @@ export const Posts = () => {
               <span>Author: {post.user.displayName}</span>
               <span>Published in: {formatDate(post.published)}</span>  
             </div>
-            <p>{post.content}</p>
+            <div className="content-value">
+              <Link to={`/single-post/${post.id}`}><p>{trimContent(post.content, 30)}</p></Link>
+            </div>
+            <span className="read-more">
+              <Link to={`/single-post/${post.id}`}>Read more</Link>
+            </span>
             <span>
               <span className="category">
                 {post.categories.map((category: any) => (
