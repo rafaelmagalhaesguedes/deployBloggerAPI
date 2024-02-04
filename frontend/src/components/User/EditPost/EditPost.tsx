@@ -20,11 +20,6 @@ export const EditPost = () => {
         setPost(post);
         setTitle(post.title);
         setContent(post.content);
-
-        console.log('Post fetched successfully');
-        console.log(post);
-        console.log(post.title);
-        console.log(post.content);
       }
     }
     fetchPost();
