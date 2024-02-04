@@ -23,7 +23,7 @@ export const createPost = async (userId: number, title: string, content: string,
   return res.json();
 }
 
-export const findAll = async () => {
+export const findAllPosts = async () => {
   const res = await fetch("http://localhost:3001/post", {
     method: "GET",
     headers: {
@@ -33,6 +33,18 @@ export const findAll = async () => {
   });
   let data = await res.json();
   data = data.sort((a: PostType, b: PostType) => b.id - a.id);
+  return data;
+}
+
+export const findPostById = async (id: number) => {
+  const res = await fetch(`http://localhost:3001/post/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("@Auth:access_token")}`,
+    },
+  });
+  const data = await res.json();
   return data;
 }
 
