@@ -53,7 +53,9 @@ export const UserPosts = () => {
           </Post>
         ))
       ) : (
-        <p>You have not published any posts yet.</p>
+        <div className="message-not-found">
+         <p>You have not published any posts yet. Create a new post</p>
+        </div>
       )}
     </UserPostsContainer>
   );

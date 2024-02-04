@@ -8,6 +8,16 @@ export const UserPostsContainer = styled.div`
   margin: 0 auto;
 
   background-color: #fff;
+
+  .message-not-found {
+    margin: 10px;
+    font-size: 20px;
+    text-align: center;
+    
+    p {
+      margin-bottom: 10px;
+    }
+  }
 `;
 
 export const MenuBody = styled.div`
