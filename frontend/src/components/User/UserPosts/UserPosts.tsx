@@ -11,17 +11,17 @@ export const UserPosts = () => {
   const { user } = useAuth() as { user: UserType };
   const { id } = user;
   const {
-    posts,
+    userPosts,
     editingPostId,
     editingPostData,
-    fetchPosts,
-    handleEdit,
-    handleDelete,
+    fetchUserPosts,
+    handleEditUserPost,
+    handleDeleteUserPost,
     setEditingPostData
   } = userHook(id);
 
   useEffect(() => {
-    fetchPosts();
+    fetchUserPosts();
   }, []);
 
   return (
@@ -40,35 +40,37 @@ export const UserPosts = () => {
           </tr>
         </thead>
         <tbody>
-        {posts && posts.map((post: any) => (
+        {userPosts && userPosts.map((post: any) => (
           <tr key={post.id}>
             <td>
               {editingPostId === post.id ? (
-                <input value={editingPostData?.title} onChange={e => setEditingPostData({ ...editingPostData, title: e.target.value })} />
+                <input
+                  value={editingPostData?.title}
+                  onChange={(e) => setEditingPostData({ ...editingPostData, title: e.target.value })}
+                />
               ) : (
                 post.title
               )}
             </td>
             <td>
               {editingPostId === post.id ? (
-                <input value={editingPostData?.content} onChange={e => setEditingPostData({ ...editingPostData, content: e.target.value })} />
+                <input
+                  value={editingPostData?.content}
+                  onChange={(e) => setEditingPostData({ ...editingPostData, content: e.target.value })}
+                />
               ) : (
                 post.content
               )}
             </td>
-            <td>
-              {post.user.displayName}
-            </td>
-            <td>
-              {formatDate(post.published)}
-            </td>
-            <td>
-              {formatDate(post.updated)}
-            </td>
+            <td>{post.user.displayName}</td>
+            <td>{formatDate(post.published)}</td>
+            <td>{formatDate(post.updated)}</td>
             <td>
               <div className="buttons">
-                <button onClick={() => handleEdit(post.id)}>{editingPostId === post.id ? 'Save' : 'Edit'}</button>
-                <button onClick={() => handleDelete(post.id)}>Delete</button>
+                <button
+                  onClick={() => handleEditUserPost(post.id)}>{editingPostId === post.id ? 'Save' : 'Edit'}
+                </button>
+                <button onClick={() => handleDeleteUserPost(post.id)}>Delete</button>
               </div>
             </td>
           </tr>
