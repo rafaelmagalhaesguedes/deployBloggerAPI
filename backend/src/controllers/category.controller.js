@@ -20,7 +20,18 @@ const getAllCategories = async (req, res) => {
   }
 };
 
+const deleteCategory = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const { status, data } = await categoryService.deleteCategory(id);
+    return res.status(httpStatus[status]).json(data);
+  } catch (error) {
+    return res.status(httpStatus.INTERNAL_ERROR).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createCategory,
   getAllCategories,
+  deleteCategory,
 };

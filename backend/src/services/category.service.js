@@ -23,8 +23,23 @@ const getAllCategories = async () => {
   return { status: 'SUCCESSFUL', data: categories };
 };
 
+const deleteCategory = async (id) => {
+  const category = await Category.findByPk(id);
+  if (!category) throw httpError('Category not found', 404);
+
+  // Delete associated posts
+  await PostCategory.destroy({ where: { categoryId: id } });
+
+  // Then delete the category
+  await category.destroy();
+
+  return { status: 'SUCCESSFUL', data: category };
+};
+
 module.exports = {
   createCategory,
   createPostCategory,
+
   getAllCategories,
+  deleteCategory,
 };
