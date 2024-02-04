@@ -32,7 +32,7 @@ function Header() {
       </MenuTop>
       <HeaderContainer>
         <Logo>
-          <h1>Project Blog's API</h1>
+          <h1><Link to="/">Project Blog's API</Link></h1>
         </Logo>
         <UserInfo>
           <span>{user.displayName}</span>

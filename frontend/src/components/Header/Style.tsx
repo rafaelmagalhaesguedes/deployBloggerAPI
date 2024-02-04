@@ -39,6 +39,11 @@ export const HeaderContainer = styled.header`
   width: 80%;
   height: 80px;
   margin: 0 auto;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
 `;
 
 export const Navbar = styled.nav`
