@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CreatePostButton, CreatePostContainer } from "./Style";
 import { postHook } from "../../../hooks/postHook";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaBookOpen, FaPlusCircle, FaPodcast } from "react-icons/fa";
 
 export const CreatePost = () => {
   const { id } = useParams();
@@ -25,8 +25,11 @@ export const CreatePost = () => {
 
   return (
     <CreatePostContainer>
-      <Link to="/"><FaArrowLeft size={15} /> Back</Link>
-      <h1>Create new post</h1>
+      <div>
+        <Link to="/"><FaArrowLeft size={15} /> Back</Link>
+        <h3>Create new post</h3>
+        <Link to="/user-posts"><span><p>My posts</p> <FaBookOpen /></span></Link>
+      </div>
       <input
         type="text"
         placeholder="Title"
@@ -38,7 +41,9 @@ export const CreatePost = () => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       ></textarea>
-
+      <div className="title-categories">
+        <h3>Categories</h3>
+      </div>
       <ul>
         {categories.map((category: any) => (
           <li key={category.id}>
