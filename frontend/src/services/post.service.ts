@@ -48,6 +48,25 @@ export const findPostById = async (id: number) => {
   return data;
 }
 
+export const updatePost = async (postId: number, title: string, content: string) => {
+  const data = { title, content };
+
+  const response = await fetch(`http://localhost:3001/post/${postId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("@Auth:access_token")}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (response.ok) {
+    return true;
+  } else {
+    throw new Error("Failed to update post");
+  }
+}
+
 export const searchPost = async (searchQuery: string) => {
   const res = await fetch(`http://localhost:3001/post/search?q=${searchQuery}`, {
     method: "GET",

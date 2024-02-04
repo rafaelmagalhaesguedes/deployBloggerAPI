@@ -3,30 +3,41 @@ import { getUserPosts, editUserPost, deleteUserPost } from '../services/user.ser
 import { PostType } from "../types/types";
 import Swal from 'sweetalert2';
 
-export const userHook = (userId: string) => {
+export const userHook = () => {
   const [userPosts, setUserPosts] = useState<PostType[]>([]);
-  const [editingPostId, setEditingPostId] = useState<number | null>(null);
-  const [editingPostData, setEditingPostData] = useState<any | null>(null);
 
-  const fetchUserPosts = async () => {
+  const fetchUserPosts = async (userId: any) => {
     const data = await getUserPosts(userId);
     setUserPosts(data);
   }
 
-  const handleEditUserPost = async (postId: number) => {
-    if (editingPostId === postId && editingPostData) {
-      const success = await editUserPost(postId, editingPostData);
-      if (success) {
-        setEditingPostId(null);
-        setEditingPostData(null);
-        Swal.fire({
-          title: "Post edited",
-          icon: "success",
+  const handleEditUserPost = async (postId: number, title: string, content: string) => {
+    const data = { title, content };
+
+    const response = await fetch(`http://localhost:3001/post/${postId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem("@Auth:access_token")}`,
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      const updatedPost = await response.json();
+      setUserPosts(userPosts.map((post) => post.id === postId ? updatedPost : post));
+      Swal.fire({
+        title: 'Post updated successfully',
+        icon: 'success',
+        timer: 2000,
       });
-      }
     } else {
-      setEditingPostId(postId);
-      setEditingPostData(userPosts.find((post) => post.id === postId));
+      console.error('Failed to update post');
+      Swal.fire({
+        title: 'Failed to update post',
+        icon: 'error',
+        timer: 2000,
+      });
     }
   }
 
@@ -58,11 +69,8 @@ export const userHook = (userId: string) => {
 
   return {
     userPosts,
-    editingPostId,
-    editingPostData,
     fetchUserPosts,
     handleEditUserPost,
     handleDeleteUserPost,
-    setEditingPostData
   };
 }

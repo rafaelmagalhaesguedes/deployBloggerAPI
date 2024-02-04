@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { findPostById } from '../../../services/post.service';
+import { findPostById, updatePost } from '../../../services/post.service';
 import { Container, Form, Button, MenuBody } from './Style';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -27,35 +27,16 @@ export const EditPost = () => {
 
   const handleEdit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const data = {
-      title,
-      content
-    };
 
-    const response = await fetch(`http://localhost:3001/post/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem("@Auth:access_token")}`,
-      },
-      body: JSON.stringify(data)
-    });
-
-    console.log(response);
+    const response = await updatePost(id, title, content);
     
-
-    if (response.ok) {
-      const updatedPost = await response.json();
-      setPost(updatedPost);
-      setTitle(updatedPost.title);
-      setContent(updatedPost.content);
-      console.log('Post updated successfully');
-      
+    if (response) {
       Swal.fire({
         title: 'Post updated successfully',
         icon: 'success',
         timer: 2000,
       });
+      return;
 
     } else {
       console.error('Failed to update post');
@@ -70,7 +51,7 @@ export const EditPost = () => {
   return (
     <Container>
       <MenuBody>
-        <Link to="/"><FaArrowLeft size={15} /> Back</Link>
+        <Link to="/user-posts"><FaArrowLeft size={15} /> Back</Link>
         <h3>Edit post</h3>
         <Link to="/user-posts"><span><p>My posts</p> <FaBookOpen /></span></Link>
       </MenuBody>
