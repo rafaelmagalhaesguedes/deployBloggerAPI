@@ -9,8 +9,6 @@ import { FaArrowLeft, FaPlusCircle } from "react-icons/fa";
 export const SinglePost = () => {
   const [post, setPost] = useState<any>([]);
   const { id } = useParams();
-  console.log(id);
-  console.log(post);
 
   useEffect(() => {
     const fetchPost = async () => {
