@@ -1,41 +1,20 @@
-import { useState } from "react";
-import { useAuth } from "../../context/auth";
-import { UserType } from "../../types/types";
 import { ProfileContainer } from "./Style";
 import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
+import { useProfile } from "../../hooks/profileHook";
 
 const Profile = () => {
-  const { user, Logout } = useAuth() as any;
-  const [editing, setEditing] = useState(false);
-  const [displayName, setDisplayName] = useState(user.displayName);
-  const [email, setEmail] = useState(user.email);
-  const [image, setImage] = useState(user.image);
-
-  const handleLogout = () => {
-    Logout();
-  };
-
-  const handleEdit = async () => {
-    if (!editing) {
-      setEditing(true);
-    } else {
-      const res = await fetch(`http://localhost:3001/user/${user.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("@Auth:access_token")}`,
-        },
-        body: JSON.stringify({ displayName, email, image }),
-      });
-
-      if (res.ok) {
-        setEditing(false);
-      } else {
-        console.error("Erro ao editar o perfil");
-      }
-    }
-  };
+  const {
+    editing,
+    displayName,
+    setDisplayName,
+    email,
+    setEmail,
+    image,
+    setImage,
+    handleLogout,
+    handleEdit
+  } = useProfile();
 
   return (
     <ProfileContainer>
