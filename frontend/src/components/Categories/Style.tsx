@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const CategoryContainer = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 50px 200px;
     width: 80%;
     margin: 0 auto;
     border-top: 1px solid #ccc;
@@ -26,12 +25,49 @@ export const CategoryContainer = styled.div`
         margin-bottom: 20px;
     }
 
-    button {
+    .createButton {
         padding: 10px;
         width: 100%;
         background-color: #000;
         color: #fff;
         border: none;
         cursor: pointer;
+    }
+`;
+
+export const CategoryWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 20px;
+`;
+
+export const CreateCategory = styled.div`
+    width: 50%;
+    padding: 20px;
+
+    input {
+        width: 100%;
+    }
+`;
+
+export const EditCategory = styled.div`
+    width: 50%;
+    padding: 20px;
+
+    .name {
+        width: 70%;
+        padding: 0 10px;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+
+        button {
+            border: none;
+            cursor: pointer;
+        }
     }
 `;

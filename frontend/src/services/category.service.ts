@@ -18,7 +18,7 @@ export const createCategory = async (name: string) => {
   return res.json();
 }
 
-export const findCategories = async () => {
+export const getCategories = async () => {
   const res = await fetch("http://localhost:3001/categories", {
     method: "GET",
     headers: {
@@ -28,4 +28,41 @@ export const findCategories = async () => {
   });
   const data = await res.json();
   return data;
+}
+
+export const updateCategory = async (id: number, name: string) => {
+  const res = await fetch(`http://localhost:3001/categories/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("@Auth:access_token")}`,
+    },
+    body: JSON.stringify({
+      name: name,
+    }),
+  });
+
+  if (res.status !== 200) {
+    const data = await res.json();
+    throw new Error(data.message);
+  }
+
+  return res.json();
+}
+
+export const deleteCategory = async (id: string) => {
+  const res = await fetch(`http://localhost:3001/categories/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("@Auth:access_token")}`,
+    },
+  });
+
+  if (res.status !== 200) {
+    const data = await res.json();
+    throw new Error(data.message);
+  }
+
+  return res.json();
 }
