@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { findCategories } from '../services/category.service';
+import { getCategories } from '../services/category.service';
 import { createPost } from '../services/post.service';
 import Swal from "sweetalert2";
 
@@ -10,7 +10,7 @@ export const postHook = (userId: number) => {
   const [selectedCategories, setSelectedCategories] = useState<any>([]);
 
   const fetchCategories = async () => {
-    const data = await findCategories();
+    const data = await getCategories();
     setCategories(data);
   }
 
