@@ -9,12 +9,30 @@ export const UserPostsContainer = styled.div`
   padding: 30px;
   gap: 5px;
 
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 20px;
+        background-color: #f2f2f2;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    span {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
     a {
         border-radius: 5px;
         text-decoration: none;
         color: #000;
         font-weight: 400;
-        padding-bottom: 15px;
     }
 
     background-color: #fff;
