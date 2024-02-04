@@ -1,12 +1,8 @@
-// Single post page
-// Path: frontend/src/pages/SinglePost/SinglePost.tsx
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { findPostById } from "../../../services/post.service";
 import formatDate from "../../../utils/formatDate";
 import { Category, ContainerPost, Content, MenuBody, PostCard, Published, Title } from "./Style";
-import { PostType } from "../../../types/types";
 import { Link } from "react-router-dom";
 import { FaArrowLeft, FaPlusCircle } from "react-icons/fa";
 
