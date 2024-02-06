@@ -1,5 +1,5 @@
-const PROTOCOL = process.env.REACT_APP_API_PROTOCOL || "http";
-const HOST = process.env.REACT_APP_API_HOST || "localhost";
+const HOST = "backend-production-79ba.up.railway.app";
+const PROTOCOL = "https";
 const BASE_URL = `${PROTOCOL}://${HOST}`;
 
 export const registerUser = async (displayName: string, email: string, password: string, image: string) => {
