@@ -32,6 +32,7 @@ export const AuthProvider = ({ children }: any) => {
   
       const userData = await api.get("/user", {
         headers: {
+          Access: "application/json",
           Authorization: `Bearer ${res.data.token}`,
         },
       });

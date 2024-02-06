@@ -6,8 +6,8 @@ const PROTOCOL = "https";
 export const api = axios.create({
   baseURL: `${PROTOCOL}://${HOST}`,
   headers: {
-    "Access-Control-Allow-Origin": "*", // CORS
-    "Content-Type": "application/json",
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
   },
 });
 

@@ -7,7 +7,6 @@ export const registerUser = async (displayName: string, email: string, password:
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*", // CORS
     },
     body: JSON.stringify({
       displayName,
@@ -33,7 +32,6 @@ export const getUserPosts = async (id: string) => {
     method: "GET",
     headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*", // CORS
         Authorization: `Bearer ${localStorage.getItem("@Auth:access_token")}`,
     },
   });
