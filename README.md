@@ -32,8 +32,8 @@ Este projeto consiste no desenvolvimento de uma API em Node.js utilizando o paco
 ## Endpoints
 
 - POST /api/posts: Cria um novo post (requer autenticação).
-- GET /api/posts: Obtém a lista de todos os posts.
-- GET /api/posts/:id: Obtém detalhes de um post específico.
+- GET /api/posts: Obtém a lista de todos os posts. (requer autenticação)
+- GET /api/posts/:id: Obtém detalhes de um post específico. (requer autenticação)
 - PUT /api/posts/:id: Atualiza um post existente (requer autenticação).
 - DELETE /api/posts/:id: Exclui um post existente (requer autenticação).
 
