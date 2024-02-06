@@ -5,11 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    include: ['axios', 'react-router-dom', 'react-query', 'react-query/devtools', 'react-query/hydration', 'react-query/mutation', 'react-query/query', 'react-query/queryClient', 'react-query/queryClientProvider'],
+    include: ['axios', 'react', 'react-dom'],
   },
   build: {
     commonjsOptions: {
-      include: ['axios', 'react-router-dom', 'react-query', 'react-query/devtools', 'react-query/hydration', 'react-query/mutation', 'react-query/query', 'react-query/queryClient', 'react-query/queryClientProvider'],
+      include: ['axios', 'react', 'react-dom'],
     },
   },
 })
