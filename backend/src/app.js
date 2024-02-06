@@ -7,6 +7,6 @@ app.use(cors());
 app.use(express.json());
 app.use(routers);
 
-// app.get('/', (_request, response) => response.send('Healthy check OK!'));
+app.get('/', (_request, response) => response.send('Healthy check OK!'));
 
 module.exports = app;
