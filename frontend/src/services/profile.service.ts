@@ -1,5 +1,9 @@
+const PROTOCOL = process.env.REACT_APP_API_PROTOCOL || "http";
+const HOST = process.env.REACT_APP_API_HOST || "localhost";
+const BASE_URL = `${PROTOCOL}://${HOST}/user`;
+
 export const updateUserProfile = async (userId: string, displayName: string, email: string, image: string) => {
-  const response = await fetch(`http://localhost:3001/user/${userId}`, {
+  const response = await fetch(`${BASE_URL}/${userId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

@@ -1,7 +1,9 @@
-const API_URL = 'http://localhost:3001';
+const PROTOCOL = process.env.REACT_APP_API_PROTOCOL || "http";
+const HOST = process.env.REACT_APP_API_HOST || "localhost";
+const BASE_URL = `${PROTOCOL}://${HOST}`;
 
 export const registerUser = async (displayName: string, email: string, password: string, image: string) => {
-  const response = await fetch(`${API_URL}/user`, {
+  const response = await fetch(`${BASE_URL}/user`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -26,7 +28,7 @@ export const registerUser = async (displayName: string, email: string, password:
 };
 
 export const getUserPosts = async (id: string) => {
-  const res = await fetch(`${API_URL}/post/user/${id}`, {
+  const res = await fetch(`${BASE_URL}/post/user/${id}`, {
     method: "GET",
     headers: {
         "Content-Type": "application/json",
@@ -38,7 +40,7 @@ export const getUserPosts = async (id: string) => {
 };
 
 export const editUserPost = async (postId: number, editingPostData: any) => {
-  const res = await fetch(`${API_URL}/post/${postId}`, {
+  const res = await fetch(`${BASE_URL}/post/${postId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -56,7 +58,7 @@ export const editUserPost = async (postId: number, editingPostData: any) => {
 };
 
 export const deleteUserPost = async (postId: number) => {
-  const res = await fetch(`${API_URL}/post/${postId}`, {
+  const res = await fetch(`${BASE_URL}/post/${postId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

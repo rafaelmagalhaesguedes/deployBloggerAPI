@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const HOST = process.env.REACT_APP_API_HOST || "localhost:3001";
+const HOST = process.env.REACT_APP_API_HOST || "localhost";
 const PROTOCOL = process.env.REACT_APP_API_PROTOCOL || "http";
 
 export const api = axios.create({

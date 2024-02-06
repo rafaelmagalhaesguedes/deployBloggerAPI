@@ -1,5 +1,9 @@
+const PROTOCOL = process.env.REACT_APP_API_PROTOCOL || "http";
+const HOST = process.env.REACT_APP_API_HOST || "localhost";
+const BASE_URL = `${PROTOCOL}://${HOST}/categories`;
+
 export const createCategory = async (name: string) => {
-  const res = await fetch("http://localhost:3001/categories", {
+  const res = await fetch(`${BASE_URL}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -19,7 +23,7 @@ export const createCategory = async (name: string) => {
 }
 
 export const getCategories = async () => {
-  const res = await fetch("http://localhost:3001/categories", {
+  const res = await fetch(`${BASE_URL}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -31,7 +35,7 @@ export const getCategories = async () => {
 }
 
 export const updateCategory = async (id: number, name: string) => {
-  const res = await fetch(`http://localhost:3001/categories/${id}`, {
+  const res = await fetch(`${BASE_URL}/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -51,7 +55,7 @@ export const updateCategory = async (id: number, name: string) => {
 }
 
 export const deleteCategory = async (id: string) => {
-  const res = await fetch(`http://localhost:3001/categories/${id}`, {
+  const res = await fetch(`${BASE_URL}/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
