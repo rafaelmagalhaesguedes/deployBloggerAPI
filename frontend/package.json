@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "react-scripts start",
+    "build": "react-scripts build",
     "dev": "vite --open",
-    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
