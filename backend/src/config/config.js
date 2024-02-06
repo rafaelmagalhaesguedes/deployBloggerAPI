@@ -1,3 +1,4 @@
+//
 const options = {
   username: process.env.MYSQLUSER || 'root',
   password: process.env.MYSQLPASSWORD || 'root',
