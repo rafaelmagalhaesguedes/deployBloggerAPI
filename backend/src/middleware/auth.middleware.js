@@ -1,22 +1,6 @@
 const { splitToken, verifyToken } = require('../utils/auth');
 const { httpStatus } = require('../utils/httpStatus');
 
-/* app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.header('Access-Control-Allow-Origin', '*'); // replace '*' with your domain if you want to restrict access
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
- */
-const accessControl = (req, res, next) => {
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.header('Access-Control-Allow-Origin', '*'); // replace '*' with your domain if you want to restrict access
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-};
-
 const authenticate = (req, res, next) => {
   const { authorization } = req.headers;
 
@@ -37,5 +21,4 @@ const authenticate = (req, res, next) => {
 
 module.exports = { 
   authenticate,
-  accessControl,
 };
