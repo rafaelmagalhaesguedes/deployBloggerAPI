@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { CategoryContainer, CategoryWrapper, CreateCategory, EditCategory } from "./Style";
 import { useCategory } from "../../hooks/categoryHook";
 import { FaArrowLeft, FaEdit, FaTrash, FaSave } from "react-icons/fa";
-import { CategoryType } from "../../types/types";
 
 const Categories = () => {
   const { name, setName, categories, handleCreateCategory, handleEditCategory, handleDeleteCategory } = useCategory();

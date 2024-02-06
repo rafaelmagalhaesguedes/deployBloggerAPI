@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContextData, LoginType, UserCreateType } from "../types/authContext";
-import { api } from "../services/auth.service";;
+import { api } from "../services/auth";;
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
