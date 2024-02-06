@@ -11,10 +11,6 @@ export default defineConfig({
           react: ['react'],
           'react-dom': ['react-dom']
         }
-      },
-      input: {
-        main: '/index.js',
-        auth: 'src/services/auth.js',
       }
     }
   }
