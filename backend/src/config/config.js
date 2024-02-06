@@ -10,4 +10,4 @@ const options = {
   },
 };
 
-module.exports = options;
+module.exports = { development: options, production: options, test: options };
