@@ -1,20 +1,14 @@
 const options = {
-  host: process.env.MYSQLHOST,
-  port: process.env.MYSQLPORT,
-  database: process.env.MYSQLDATABASE,
-  username: process.env.MYSQLUSER,
-  password: process.env.MYSQLPASSWORD,
+  username: process.env.MYSQLUSER || 'root',
+  password: process.env.MYSQLPASSWORD || 'root',
+  database: process.env.MYSQLDATABASE || 'blogs-api',
+  host: process.env.MYSQLHOST || 'localhost',
+  port: process.env.MYSQLPORT || 3306,
   dialect: 'mysql',
-  dialectOptions: {
-    timezone: 'Z',
-  },
 };
 
 module.exports = {
-  development: {
-    ...options,
-  },
-  test: {
-    ...options,
-  },
+  development: options,
+  test: options,
+  production: options,
 };
