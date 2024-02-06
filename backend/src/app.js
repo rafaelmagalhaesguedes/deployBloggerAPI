@@ -5,14 +5,6 @@ const routers = require('./routes');
 const app = express();
 
 app.use(cors());
-
-app.use((_req, res, next) => {
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
-
 app.use(express.json());
 app.use(routers);
 
