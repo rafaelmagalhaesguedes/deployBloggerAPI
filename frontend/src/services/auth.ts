@@ -6,7 +6,6 @@ const PROTOCOL = "https";
 export const api = axios.create({
   baseURL: `${PROTOCOL}://${HOST}`,
   headers: {
-    'Access-Control-Allow-Origin': "*",
     'Content-Type': 'application/json'
   },
 });
@@ -16,6 +15,7 @@ api.interceptors.request.use(
     const token = localStorage.getItem("@Auth:access_token");
     if (token) {
       config.headers = {
+        Access_Control_Allow_Origin: "*",
         Authorization: `Bearer ${token}`,
       } as any;
     }
