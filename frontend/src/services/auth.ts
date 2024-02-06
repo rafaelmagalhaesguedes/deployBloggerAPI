@@ -2,10 +2,9 @@ import axios from "axios";
 
 const HOST = process.env.REACT_APP_API_HOST || "localhost";
 const PROTOCOL = process.env.REACT_APP_API_PROTOCOL || "http";
-const PORT = process.env.REACT_APP_API_PORT || "3001";
 
 export const api = axios.create({
-  baseURL: `${PROTOCOL}://${HOST}:${PORT}`,
+  baseURL: `${PROTOCOL}://${HOST}`,
   headers: {
     "Content-Type": "application/json",
   },
