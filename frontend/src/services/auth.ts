@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const HOST = process.env.REACT_APP_API_URL || "localhost:3001";
-const PROTOCOL = process.env.REACT_APP_API_PROTOCOL || "http";
+const HOST = 'backend-blogs-api-production.up.railway.app';
+const PROTOCOL = "https";
 
 export const api = axios.create({
   baseURL: `${PROTOCOL}://${HOST}`,
