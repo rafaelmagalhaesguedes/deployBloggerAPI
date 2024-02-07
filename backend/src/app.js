@@ -14,6 +14,11 @@ app.use((_req, res, next) => {
   next();
 });
 
+app.use(cors({
+  allowedHeaders: '*',
+  methods: 'GET, POST, PUT, DELETE, OPTIONS',
+}));
+
 app.use(express.json());
 app.use(routers);
 
